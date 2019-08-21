@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane prefHeight="386.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+    <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <tabs>
+            <Tab text="Main">
+                <Label fx:id="str"/>
+            </Tab>
+            <Tab text="Abilities">
+                <fx:include fx:id="abilitiesTab" source="AbilitiesTab.fxml" />
+            </Tab>
+            <Tab text="Ancestry" />
+            <Tab text="Class" />
+            <Tab text="Arms and Armor" />
+            <Tab text="Feats">
+                <fx:include fx:id="featsTab" source="FeatsTab.fxml" />
+            </Tab>
+            <Tab text="Spells" />
+            <Tab text="Magic Items" />
+            <Tab text="Gear" />
+        </tabs>
+    </TabPane>
+</AnchorPane>

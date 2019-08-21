@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AbilitiesTabController">
+   <VBox alignment="CENTER" layoutX="75.0" layoutY="36.0" prefHeight="302.0" prefWidth="156.0" spacing="5.0" style="-fx-border-color: green;" AnchorPane.leftAnchor="75.0">
+      <children>
+         <Label text="Strength" />
+         <Label fx:id="strMod" />
+          <Label fx:id="str" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="58.0" />
+         <Label text="Dexterity" />
+         <Label fx:id="dexMod" />
+          <Label fx:id="dex" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="58.0" />
+         <Label text="Constitution" />
+         <Label fx:id="conMod" />
+          <Label fx:id="con" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="58.0" />
+         <Label text="Intelligence" />
+         <Label fx:id="inteMod" />
+          <Label fx:id="inte" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="58.0" />
+         <Label text="Wisdom" />
+         <Label fx:id="wisMod" />
+          <Label fx:id="wis" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="58.0" />
+         <Label text="Charisma" />
+         <Label fx:id="chaMod" />
+          <Label fx:id="cha" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="58.0" />
+      </children>
+   </VBox>
+   <Button fx:id="strAdd" layoutX="231.0" layoutY="67.0" mnemonicParsing="false" onAction="#addStr" text="Add" AnchorPane.leftAnchor="231.0" />
+   <Button fx:id="strSub" layoutX="14.0" layoutY="67.0" mnemonicParsing="false" onAction="#subStr" text="Subtract" AnchorPane.leftAnchor="14.0" />
+   <Button fx:id="dexAdd" layoutX="231.0" layoutY="132.0" mnemonicParsing="false" onAction="#addDex" text="Add" AnchorPane.leftAnchor="231.0" />
+   <Button fx:id="dexSub" layoutX="14.0" layoutY="132.0" mnemonicParsing="false" onAction="#subDex" text="Subtract" AnchorPane.leftAnchor="14.0" />
+   <Button fx:id="conAdd" layoutX="231.0" layoutY="205.0" mnemonicParsing="false" onAction="#addCon" text="Add" AnchorPane.leftAnchor="231.0" />
+   <Button fx:id="conSub" layoutX="14.0" layoutY="205.0" mnemonicParsing="false" onAction="#subCon" text="Subtract" AnchorPane.leftAnchor="14.0" />
+   <Button fx:id="inteAdd" layoutX="231.0" layoutY="268.0" mnemonicParsing="false" onAction="#addInte" text="Add" AnchorPane.leftAnchor="231.0" />
+   <Button fx:id="inteSub" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" onAction="#subInte" text="Subtract" AnchorPane.leftAnchor="14.0" />
+   <Button fx:id="wisAdd" layoutX="231.0" layoutY="335.0" mnemonicParsing="false" onAction="#addWis" text="Add" AnchorPane.leftAnchor="231.0" />
+   <Button fx:id="wisSub" layoutX="14.0" layoutY="335.0" mnemonicParsing="false" onAction="#subWis" text="Subtract" AnchorPane.leftAnchor="14.0" />
+   <Button fx:id="chaAdd" layoutX="231.0" layoutY="396.0" mnemonicParsing="false" onAction="#addCha" text="Add" AnchorPane.leftAnchor="231.0" />
+   <Button fx:id="chaSub" layoutX="14.0" layoutY="396.0" mnemonicParsing="false" onAction="#subCha" text="Subtract" AnchorPane.leftAnchor="14.0" />
+</AnchorPane>

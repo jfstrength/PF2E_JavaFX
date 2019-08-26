@@ -4,7 +4,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-//Initial screen, access from Main
+//Initial screen
 
 public class Start extends Application {
 

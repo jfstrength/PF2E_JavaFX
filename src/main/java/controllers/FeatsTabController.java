@@ -17,7 +17,7 @@ public class FeatsTabController implements Initializable {
     }
 
     public void newButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/Views/FeatWindow.fxml"));
+        Parent root = FXMLLoader.load(ClassLoader.getSystemResource("views/FeatWindow.fxml"));
         Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

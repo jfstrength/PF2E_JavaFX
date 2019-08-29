@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -31,52 +32,95 @@ public class FeatWindowController implements Initializable {
     @FXML
     private VBox rightContainer;
 
+
+    private String currentItem;
     private Adventurer adventurer;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        openChoice("data/feats/general");
+        openChoice("data/feats/general",container,rightContainer);
     }
 
+    public void setParentController(FeatsTabController parentController) {
+//        Get Domain Object from Parent Controller
+        setAdventurer(parentController.getAdventurer());
+    }
 
     public void setAdventurer(Adventurer adventurer) {
         this.adventurer = adventurer;
     }
 
-    private void openChoice(String fileName) {
-        VBox content = new VBox();
+    public String getCurrentItem() {
+        return currentItem;
+    }
+
+    public void setCurrentItem(String currentItem) {
+        this.currentItem = currentItem;
+    }
+
+    private void openChoice(String fileName, ScrollPane container, VBox rightContainer) {
+        VBox content = new VBox(4);
         content.setAlignment(Pos.CENTER);
-        content.setSpacing(4);
         ObservableList<Node> list = content.getChildren();
+
         try {
            ObjectMapper objectMapper = new ObjectMapper();
            ClassLoader classLoader = FeatWindowController.class.getClassLoader();
            File folder = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
-           System.out.println(folder.exists());
+
             for(final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
                Feat feat = objectMapper.readValue(fileEntry, Feat.class);
                Label label = new Label(feat.getFeatName());
                label.setOnMouseClicked(new EventHandler<MouseEvent>() {
                    @Override
                    public void handle(MouseEvent mouseEvent) {
+                       setCurrentItem(feat.getFeatName());
                        rightContainer.getChildren().clear();
                        Label description = new Label(feat.getDescription());
                        description.setWrapText(true);
                        rightContainer.getChildren().add(description);
-                       rightContainer.setFillWidth(true);
                    }
                });
                 label.setPadding(new Insets(3,3,3,3));
                 label.setBorder(new Border(new BorderStroke(Color.FORESTGREEN, BorderStrokeStyle.SOLID, null, new BorderWidths(2))));
-               list.add(label);
+                list.add(label);
            }
            container.setContent(content);
-           container.setPannable(true);
-           container.setFitToWidth(true);
         } catch(Exception e) {
             e.printStackTrace();
         }
 
     }
+
+    private Feat loadItem(String fileName) {
+        try {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ClassLoader classLoader = FeatWindowController.class.getClassLoader();
+        fileName = "data/feats/general/" + fileName;
+        final File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
+        return objectMapper.readValue(file, Feat.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @FXML
+    private void addChoice() {
+        setCurrentItem(getCurrentItem().replaceAll("\\s+",""));
+        if(!getCurrentItem().endsWith(".json"))
+            setCurrentItem(getCurrentItem()+".json");
+        Feat newFeat = loadItem(getCurrentItem());
+        if(adventurer.hasFeat(newFeat)) {
+            System.out.println("Already has that feat");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Preexisting feat");
+            alert.setHeaderText("Feat not added");
+            alert.setContentText("This character already has that feat.");
+            alert.showAndWait();
+            return; }
+        adventurer.getFeats().add(newFeat);
+    }
+
 
 }

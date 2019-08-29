@@ -1,5 +1,8 @@
 package models;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +30,29 @@ public Adventurer() {
     this.wisdom=14;
     this.charisma=15;
 }
+
+    public List<Feat> getFeats() {
+        return feats;
+    }
+
+    public void printFeats() {
+        for(Feat feat : feats) {
+            System.out.println(feat.getFeatName());
+        }
+    }
+
+    public boolean hasFeat(Feat feat) {
+        for(Feat test : feats) {
+            if(test.getFeatName().equals(feat.getFeatName()))
+                return true;
+        }
+        return false;
+    }
+
+    public void setFeats(List<Feat> feats) {
+        this.feats = feats;
+    }
+
 
     public int getStrength() { return strength; }
 

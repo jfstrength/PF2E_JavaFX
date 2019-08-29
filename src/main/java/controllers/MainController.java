@@ -14,6 +14,8 @@ public class MainController implements Initializable {
 
     @FXML
     private AbilitiesTabController abilitiesTabController;
+    @FXML
+    private FeatsTabController featsTabController;
 
     @FXML
     private Label str;
@@ -23,8 +25,9 @@ public class MainController implements Initializable {
         //Initialize Domain Object
         adventurer = new Adventurer();
 
-        //Pass model to Abilities Tab via Parent Controller
+        //Pass model to Tabs via Parent Controller
         abilitiesTabController.setParentController(this);
+        featsTabController.setParentController(this);
 
     }
 

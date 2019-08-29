@@ -35,16 +35,12 @@ public class AbilitiesTabController implements Initializable {
     @FXML
     private Label chaMod;
 
-    @FXML
-    private MainController parentController;
-
     private Adventurer adventurer;
 
     @Override public void initialize(URL url, ResourceBundle rb){
     }
 
     public void setParentController(MainController parentController) {
-        this.parentController = parentController;
         //Get Domain Object from Parent Controller
         setAdventurer(parentController.getAdventurer());
     }

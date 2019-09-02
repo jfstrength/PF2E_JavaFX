@@ -41,6 +41,15 @@ public Adventurer() {
         }
     }
 
+    public ObservableList<String> getFeatNames() {
+        ObservableList<String> names = FXCollections.observableArrayList();
+        for(Feat feat : feats) {
+            String name = feat.getFeatName();
+            names.add(name);
+        }
+        return names;
+    }
+
     public boolean hasFeat(Feat feat) {
         for(Feat test : feats) {
             if(test.getFeatName().equals(feat.getFeatName()))

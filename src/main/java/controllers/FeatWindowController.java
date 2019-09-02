@@ -32,7 +32,7 @@ public class FeatWindowController implements Initializable {
     @FXML
     private VBox rightContainer;
 
-
+    private FeatsTabController parentController;
     private String currentItem;
     private Adventurer adventurer;
 
@@ -44,6 +44,11 @@ public class FeatWindowController implements Initializable {
     public void setParentController(FeatsTabController parentController) {
 //        Get Domain Object from Parent Controller
         setAdventurer(parentController.getAdventurer());
+        setParent(parentController);
+    }
+
+    public void setParent(FeatsTabController parentController) {
+        this.parentController = parentController;
     }
 
     public void setAdventurer(Adventurer adventurer) {
@@ -92,7 +97,10 @@ public class FeatWindowController implements Initializable {
 
     }
 
-    private Feat loadItem(String fileName) {
+    public static Feat loadItem(String fileName) {
+        fileName = fileName.replaceAll("\\s+","");
+        if(!fileName.endsWith(".json"))
+            fileName += ".json";
         try {
         ObjectMapper objectMapper = new ObjectMapper();
         ClassLoader classLoader = FeatWindowController.class.getClassLoader();
@@ -120,6 +128,7 @@ public class FeatWindowController implements Initializable {
             alert.showAndWait();
             return; }
         adventurer.getFeats().add(newFeat);
+        parentController.listFeats();
     }
 
 
